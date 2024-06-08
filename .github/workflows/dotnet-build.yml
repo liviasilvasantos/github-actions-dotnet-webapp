@@ -2,11 +2,26 @@ name: Testando workflow
 on:
   push:
 jobs:
-  lint:
-    name: Lint Code Base
+  job_1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: super-linter/super-linter@v5.7.2
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: echo "the job was triggered by a `${{github.event_name}}` event"
+      - run: echo "drive is `${{github.event.inputs.homedrive}}`"
+      - run: echo "environment is `${{github.event.inputs.environment}}`"
+      - run: echo "log level is `${{github.event.inputs.logLevel}}`"
+      - run: echo "run the matrix? `${{github.event.inputs.run_matrix}}`"
+  job_2:
+    runs-on: ubuntu-latest
+    needs: job_1
+    steps:
+      - run: echo "status ${{job.status}}"
+  job_3:
+    runs-on: ubuntu-latest
+    needs: job_1
+    steps:
+      - run: echo "services ${{job.services}}"
+  job_4:
+    runs-on: ubuntu-latest
+    needs: [job_2, job_3]
+    steps:
+      - run: echo "status ${{job.status}}"

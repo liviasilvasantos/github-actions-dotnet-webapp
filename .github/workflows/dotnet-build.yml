@@ -25,5 +25,5 @@ jobs:
         run: dotnet restore **/*.csproj
       - name: dotnet compile
         run: dotnet build **/*.csproj --no-restore
-      - name: dotnet run
-        run: dotnet run --project **/*.csproj
+      #- name: dotnet run
+      #  run: dotnet run --project **/*.csproj

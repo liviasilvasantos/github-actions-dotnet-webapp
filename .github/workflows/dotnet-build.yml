@@ -9,7 +9,7 @@ jobs:
   job_log:
     runs-on: ubuntu-latest
     steps:
-      - run: ./github4women/log-push.sh
+      - run: ./log-push.sh
   job_build_dotnet:
     runs-on: ubuntu-latest
     steps:

@@ -9,7 +9,7 @@ jobs:
   job_log:
     runs-on: ubuntu-latest
     steps:
-      - run: bash log-push.sh
+      - run: bash ./scripts/log-push.sh
   job_build_dotnet:
     runs-on: ubuntu-latest
     steps:

@@ -9,4 +9,19 @@ jobs:
   job_log:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "logando o push"
+      - run: ./github4women/log-push.sh
+  job_build_dotnet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: set up
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+      - name: dotnet restore
+        run: dotnet restore **/*.csproj
+      - name: dotnet compile
+        run: dotnet build **/*.csproj --no-restore
+      - name: dotnet run
+        run: dotnet run --project **/*.csproj

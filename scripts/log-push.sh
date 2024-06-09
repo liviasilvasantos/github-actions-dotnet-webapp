@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "logging push"
+echo "executando log via script"

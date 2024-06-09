@@ -9,7 +9,8 @@ jobs:
   job_log:
     runs-on: ubuntu-latest
     steps:
-      - run: chmod +x ./scripts/log-push.sh
+      - name: checkout
+        uses: actions/checkout@v2
       - run: bash ./scripts/log-push.sh
   job_build_dotnet:
     runs-on: ubuntu-latest
